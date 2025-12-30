@@ -6,16 +6,48 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rohith S | Software Engineer</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
   <style>
+    :root {
+      --bg: #f6f2ea;
+      --bg-2: #fbf8f2;
+      --ink: #1f1c19;
+      --muted: #5e5a55;
+      --accent: #0f766e;
+      --accent-2: #c95f3c;
+      --card: #ffffff;
+      --outline: #eadfd3;
+      --shadow: 0 24px 60px rgba(21, 28, 30, 0.12);
+    }
+
     body {
-      font-family: 'Inter', sans-serif;
-      background-color: #0a192f;
-      color: #ccd6f6;
+      font-family: 'Space Grotesk', sans-serif;
+      background: radial-gradient(1200px 600px at 10% 10%, rgba(15, 118, 110, 0.12), transparent 60%),
+        radial-gradient(900px 500px at 90% 20%, rgba(201, 95, 60, 0.12), transparent 55%),
+        linear-gradient(120deg, var(--bg), var(--bg-2));
+      color: var(--ink);
+    }
+
+    .display-font {
+      font-family: 'Fraunces', serif;
+    }
+
+    .text-ink {
+      color: var(--ink);
+    }
+
+    .text-muted {
+      color: var(--muted);
     }
 
     .text-accent {
-      color: #64ffda;
+      color: var(--accent);
+    }
+
+    .text-accent-2 {
+      color: var(--accent-2);
     }
 
     #constellation-canvas {
@@ -25,7 +57,7 @@
       width: 100%;
       height: 100%;
       z-index: -1;
-      opacity: 0.5;
+      opacity: 0.25;
     }
 
     .section-heading::after {
@@ -36,19 +68,21 @@
       width: 300px;
       height: 1px;
       margin-left: 20px;
-      background-color: #233554;
+      background-color: var(--outline);
     }
 
     .experience-card,
     .project-card {
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-      background-color: #112240;
+      background-color: var(--card);
+      border: 1px solid var(--outline);
+      box-shadow: var(--shadow);
     }
 
     .experience-card:hover,
     .project-card:hover {
       transform: translateY(-8px);
-      box-shadow: 0 0 25px rgba(100, 255, 218, 0.15);
+      box-shadow: 0 35px 80px rgba(15, 118, 110, 0.18);
     }
 
     .social-sidebar {
@@ -67,18 +101,119 @@
       display: block;
       width: 1px;
       height: 90px;
-      background-color: #a8b2d1;
+      background-color: var(--muted);
+      opacity: 0.4;
     }
 
     .fade-in-section {
       opacity: 0;
-      transform: translateY(20px);
+      transform: translateY(20px) scale(0.98);
       transition: opacity 0.6s ease-out, transform 0.6s ease-out;
     }
 
     .fade-in-section.is-visible {
       opacity: 1;
       transform: translateY(0);
+    }
+
+    .ambient-orb {
+      position: fixed;
+      z-index: -2;
+      filter: blur(10px);
+      opacity: 0.6;
+    }
+
+    .orb-1 {
+      width: 280px;
+      height: 280px;
+      top: 120px;
+      right: 10%;
+      background: radial-gradient(circle, rgba(201, 95, 60, 0.35), transparent 70%);
+    }
+
+    .orb-2 {
+      width: 220px;
+      height: 220px;
+      bottom: 18%;
+      left: 8%;
+      background: radial-gradient(circle, rgba(15, 118, 110, 0.35), transparent 70%);
+    }
+
+    .hero-chip {
+      border: 1px solid var(--outline);
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(6px);
+    }
+
+    .pill {
+      background: rgba(15, 118, 110, 0.12);
+      color: var(--accent);
+      border: 1px solid rgba(15, 118, 110, 0.2);
+    }
+
+    .project-links a {
+      border-bottom: 1px solid transparent;
+    }
+
+    .project-links a:hover {
+      border-bottom-color: var(--accent);
+    }
+
+    .live-card {
+      background: linear-gradient(120deg, rgba(15, 118, 110, 0.08), rgba(201, 95, 60, 0.06));
+      border: 1px solid var(--outline);
+    }
+
+    .live-card .chip {
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid var(--outline);
+    }
+
+    .live-card a {
+      border-bottom: 1px solid transparent;
+    }
+
+    .live-card a:hover {
+      border-bottom-color: var(--accent-2);
+    }
+
+    .nav-link {
+      position: relative;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .stagger > * {
+      transition-delay: 0.05s;
+    }
+
+    .stagger > *:nth-child(2) {
+      transition-delay: 0.12s;
+    }
+
+    .stagger > *:nth-child(3) {
+      transition-delay: 0.18s;
+    }
+
+    .stagger > *:nth-child(4) {
+      transition-delay: 0.24s;
+    }
+
+    .stagger > *:nth-child(5) {
+      transition-delay: 0.3s;
     }
 
     @media (max-width: 768px) {
@@ -92,11 +227,13 @@
 <body class="antialiased leading-relaxed">
 
   <canvas id="constellation-canvas"></canvas>
+  <div class="ambient-orb orb-1"></div>
+  <div class="ambient-orb orb-2"></div>
 
   <!-- Floating Social Sidebar -->
   <div class="social-sidebar">
     <a href="https://github.com/svrohith9" target="_blank"
-      class="text-[#a8b2d1] hover:text-accent transition-transform hover:-translate-y-1">
+      class="text-muted hover:text-accent transition-transform hover:-translate-y-1">
       <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
         <path fill-rule="evenodd"
           d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.49.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.378.203 2.398.1 2.651.64.7 1.03 1.595 1.03 2.688 0 3.848-2.338 4.695-4.566 4.943.359.308.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z"
@@ -104,7 +241,7 @@
       </svg>
     </a>
     <a href="https://www.linkedin.com/in/svrohith9/" target="_blank"
-      class="text-[#a8b2d1] hover:text-accent transition-transform hover:-translate-y-1">
+      class="text-muted hover:text-accent transition-transform hover:-translate-y-1">
       <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
         <path
           d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z">
@@ -114,23 +251,28 @@
   </div>
 
   <!-- Header / Navbar -->
-  <header class="fixed top-0 left-0 right-0 z-50 bg-opacity-80 backdrop-blur-md bg-[#0a192f]/80 shadow-md">
+  <header
+    class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-[#eadfd3] shadow-sm">
     <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
       <div class="text-2xl font-bold text-accent">
         <a href="#">R.S</a>
       </div>
       <div class="hidden md:flex items-center space-x-8 text-sm">
-        <a href="#about" class="hover:text-accent transition-colors duration-300"><span class="text-accent">01.</span>
+        <a href="#about" class="nav-link text-ink hover:text-accent transition-colors duration-300"><span
+            class="text-accent">01.</span>
           About</a>
-        <a href="#experience" class="hover:text-accent transition-colors duration-300"><span
+        <a href="#experience" class="nav-link text-ink hover:text-accent transition-colors duration-300"><span
             class="text-accent">02.</span> Experience</a>
-        <a href="#projects" class="hover:text-accent transition-colors duration-300"><span
+        <a href="#projects" class="nav-link text-ink hover:text-accent transition-colors duration-300"><span
             class="text-accent">03.</span> Work</a>
-        <a href="#contact" class="hover:text-accent transition-colors duration-300"><span class="text-accent">04.</span>
+        <a href="#live-projects" class="nav-link text-ink hover:text-accent transition-colors duration-300"><span
+            class="text-accent">04.</span> Live</a>
+        <a href="#contact" class="nav-link text-ink hover:text-accent transition-colors duration-300"><span
+            class="text-accent">05.</span>
           Contact</a>
       </div>
       <a href="Rohith_S_.pdf" target="_blank"
-        class="hidden md:block border border-accent text-accent px-4 py-2 rounded-md text-sm hover:bg-accent hover:bg-opacity-10 transition-colors duration-300">
+        class="hidden md:block border border-accent text-accent px-4 py-2 rounded-md text-sm hover:bg-accent hover:bg-opacity-10 transition-colors duration-300 hero-chip">
         Resume
       </a>
     </nav>
@@ -140,21 +282,21 @@
 
     <!-- Hero Section -->
     <section id="hero" class="min-h-screen flex flex-col justify-center">
-      <p class="text-accent text-lg mb-4 font-mono">Hi, my name is</p>
-      <h1 class="text-4xl md:text-7xl font-extrabold text-[#ccd6f6]">Rohith S.</h1>
-      <h2 class="text-4xl md:text-7xl font-extrabold text-[#8892b0]">I build scalable backend systems.</h2>
-      <p class="max-w-xl mt-6 text-[#8892b0]">
+      <p class="text-accent text-lg mb-4 tracking-[0.2em] uppercase">Backend Engineer</p>
+      <h1 class="text-4xl md:text-7xl font-extrabold text-ink display-font">Rohith S.</h1>
+      <h2 class="text-4xl md:text-7xl font-extrabold text-muted display-font">I build scalable backend systems.</h2>
+      <p class="max-w-xl mt-6 text-muted">
         I'm a backend-focused Software Engineer with 5+ years of experience specializing in building high-performance,
         scalable systems with Java, Spring Boot, and AWS. I'm passionate about architecting robust APIs and deploying
         resilient cloud-native applications.
       </p>
       <div class="mt-12 flex flex-col sm:flex-row items-center gap-4">
         <a href="mailto:svrohith9@gmail.com"
-          class="bg-accent text-[#0a192f] font-bold py-4 px-8 rounded-md hover:bg-opacity-80 transition-all duration-300 w-full sm:w-auto text-center">
+          class="bg-accent text-white font-bold py-4 px-8 rounded-md hover:bg-opacity-80 transition-all duration-300 w-full sm:w-auto text-center">
           Get In Touch
         </a>
         <a href="Rohith_S_.pdf" target="_blank"
-          class="border border-accent text-accent font-bold py-4 px-8 rounded-md hover:bg-accent hover:bg-opacity-10 transition-colors duration-300 w-full sm:w-auto text-center">
+          class="border border-accent text-accent font-bold py-4 px-8 rounded-md hover:bg-accent hover:bg-opacity-10 transition-colors duration-300 w-full sm:w-auto text-center hero-chip">
           View My Resume
         </a>
       </div>
@@ -162,11 +304,11 @@
 
     <!-- About Section -->
     <section id="about" class="py-24 fade-in-section">
-      <h2 class="section-heading flex items-center text-3xl font-bold mb-12">
+      <h2 class="section-heading flex items-center text-3xl font-bold mb-12 display-font text-ink">
         <span class="text-accent mr-4">01.</span> About Me
       </h2>
       <div class="grid grid-cols-1 md:grid-cols-5 gap-12">
-        <div class="md:col-span-3 text-[#8892b0]">
+        <div class="md:col-span-3 text-muted">
           <p class="mb-4">
             Hello! I'm Rohith, a software engineer who thrives on the challenges of backend development. My journey in
             tech has been driven by a fascination with building the complex, unseen systems that power modern
@@ -178,25 +320,25 @@
             had the opportunity to work on everything from AI-driven microservices to large-scale cloud migrations. I am
             committed to writing clean, testable code and mentoring others to foster a culture of technical excellence.
           </p>
-          <h4 class="text-lg font-semibold text-[#ccd6f6] mb-4">Core Technologies:</h4>
+          <h4 class="text-lg font-semibold text-ink mb-4">Core Technologies:</h4>
           <div class="flex flex-wrap gap-2 text-sm font-mono">
-            <span class="bg-[#112240] text-accent px-3 py-1 rounded">Java</span>
-            <span class="bg-[#112240] text-accent px-3 py-1 rounded">Spring Boot</span>
-            <span class="bg-[#112240] text-accent px-3 py-1 rounded">Python</span>
-            <span class="bg-[#112240] text-accent px-3 py-1 rounded">AWS</span>
-            <span class="bg-[#112240] text-accent px-3 py-1 rounded">Docker</span>
-            <span class="bg-[#112240] text-accent px-3 py-1 rounded">Kubernetes</span>
-            <span class="bg-[#112240] text-accent px-3 py-1 rounded">Microservices</span>
-            <span class="bg-[#112240] text-accent px-3 py-1 rounded">REST APIs</span>
-            <span class="bg-[#112240] text-accent px-3 py-1 rounded">SQL & NoSQL</span>
+            <span class="pill px-3 py-1 rounded-full">Java</span>
+            <span class="pill px-3 py-1 rounded-full">Spring Boot</span>
+            <span class="pill px-3 py-1 rounded-full">Python</span>
+            <span class="pill px-3 py-1 rounded-full">AWS</span>
+            <span class="pill px-3 py-1 rounded-full">Docker</span>
+            <span class="pill px-3 py-1 rounded-full">Kubernetes</span>
+            <span class="pill px-3 py-1 rounded-full">Microservices</span>
+            <span class="pill px-3 py-1 rounded-full">REST APIs</span>
+            <span class="pill px-3 py-1 rounded-full">SQL & NoSQL</span>
           </div>
         </div>
         <div class="md:col-span-2 flex justify-center items-start mt-8 md:mt-0">
-          <div class="w-64 h-64 rounded-lg bg-accent relative group">
+          <div class="w-64 h-64 rounded-2xl bg-accent relative group">
             <div
-              class="absolute inset-0 bg-[#0a192f] rounded-lg transform transition-transform duration-300 group-hover:translate-x-3 group-hover:translate-y-3 border-2 border-accent">
+              class="absolute inset-0 bg-white rounded-2xl transform transition-transform duration-300 group-hover:translate-x-3 group-hover:translate-y-3 border-2 border-accent">
               <img src="https://avatars.githubusercontent.com/u/17274313?v=4" alt="Rohith S"
-                class="rounded-lg w-full h-full object-cover">
+                class="rounded-2xl w-full h-full object-cover">
             </div>
           </div>
         </div>
@@ -205,15 +347,15 @@
 
     <!-- Experience Section -->
     <section id="experience" class="py-24 fade-in-section">
-      <h2 class="section-heading flex items-center text-3xl font-bold mb-12">
+      <h2 class="section-heading flex items-center text-3xl font-bold mb-12 display-font text-ink">
         <span class="text-accent mr-4">02.</span> Where I've Worked
       </h2>
-      <div class="space-y-8">
+      <div class="space-y-8 stagger">
         <div class="experience-card p-8 rounded-lg shadow-xl">
-          <h3 class="text-xl font-bold text-[#ccd6f6]">Software Developer <span class="text-accent">@ Viacore</span>
+          <h3 class="text-xl font-bold text-ink">Software Developer <span class="text-accent">@ Viacore</span>
           </h3>
-          <p class="text-sm text-[#8892b0] mb-4">Oct 2024 - Present</p>
-          <ul class="space-y-2 text-[#8892b0] text-sm">
+          <p class="text-sm text-muted mb-4">Oct 2024 - Present</p>
+          <ul class="space-y-2 text-muted text-sm">
             <li class="flex items-start"><span class="text-accent mr-3 mt-1">▹</span>Built AI microservices with Java
               Spring Boot, integrating RAG pipelines via LangChain for real-time generative AI responses.</li>
             <li class="flex items-start"><span class="text-accent mr-3 mt-1">▹</span>Enhanced application security by
@@ -223,10 +365,10 @@
           </ul>
         </div>
         <div class="experience-card p-8 rounded-lg shadow-xl">
-          <h3 class="text-xl font-bold text-[#ccd6f6]">Software Developer <span class="text-accent">@ Norstella
+          <h3 class="text-xl font-bold text-ink">Software Developer <span class="text-accent">@ Norstella
               (Contract)</span></h3>
-          <p class="text-sm text-[#8892b0] mb-4">Jul 2023 - Oct 2024</p>
-          <ul class="space-y-2 text-[#8892b0] text-sm">
+          <p class="text-sm text-muted mb-4">Jul 2023 - Oct 2024</p>
+          <ul class="space-y-2 text-muted text-sm">
             <li class="flex items-start"><span class="text-accent mr-3 mt-1">▹</span>Designed and implemented RESTful
               APIs using Java Spring Boot, increasing system performance by 25%.</li>
             <li class="flex items-start"><span class="text-accent mr-3 mt-1">▹</span>Led the migration of applications
@@ -235,10 +377,10 @@
           </ul>
         </div>
         <div class="experience-card p-8 rounded-lg shadow-xl">
-          <h3 class="text-xl font-bold text-[#ccd6f6]">Software Developer <span class="text-accent">@ Tata Consultancy
+          <h3 class="text-xl font-bold text-ink">Software Developer <span class="text-accent">@ Tata Consultancy
               Services</span></h3>
-          <p class="text-sm text-[#8892b0] mb-4">Jan 2019 - Aug 2021</p>
-          <ul class="space-y-2 text-[#8892b0] text-sm">
+          <p class="text-sm text-muted mb-4">Jan 2019 - Aug 2021</p>
+          <ul class="space-y-2 text-muted text-sm">
             <li class="flex items-start"><span class="text-accent mr-3 mt-1">▹</span>Developed a microservice-based
               architecture using Spring Boot, improving scalability and reducing response time by 20%.</li>
             <li class="flex items-start"><span class="text-accent mr-3 mt-1">▹</span>Integrated Apache Kafka for
@@ -250,13 +392,13 @@
 
     <!-- Projects Section -->
     <section id="projects" class="py-24 fade-in-section">
-      <h2 class="section-heading flex items-center text-3xl font-bold mb-12">
+      <h2 class="section-heading flex items-center text-3xl font-bold mb-12 display-font text-ink">
         <span class="text-accent mr-4">03.</span> Some Things I've Built
       </h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 stagger">
 
         <!-- Project 1: AI Interview Coach -->
-        <div class="project-card p-6 rounded-lg flex flex-col justify-between h-full">
+        <div class="project-card p-6 rounded-xl flex flex-col justify-between h-full">
           <div>
             <div class="flex justify-between items-center mb-4">
               <svg class="w-10 h-10 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -266,24 +408,29 @@
               </svg>
               <div class="flex space-x-4">
                 <a href="https://github.com/svrohith9/Al-Powered-Interview-Coach" target="_blank"
-                  class="text-[#a8b2d1] hover:text-accent"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  class="text-muted hover:text-accent"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                     <path fill-rule="evenodd"
                       d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.49.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.378.203 2.398.1 2.651.64.7 1.03 1.595 1.03 2.688 0 3.848-2.338 4.695-4.566 4.943.359.308.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z"
                       clip-rule="evenodd"></path>
                   </svg></a>
               </div>
             </div>
-            <h3 class="text-lg font-bold text-[#ccd6f6] mb-2">AI-Powered Interview Coach</h3>
-            <p class="text-sm text-[#8892b0]">An interactive platform using LLMs to simulate real-world interviews and
+            <h3 class="text-lg font-bold text-ink mb-2">AI-Powered Interview Coach</h3>
+            <p class="text-sm text-muted">An interactive platform using LLMs to simulate real-world interviews and
               provide users with instant performance feedback.</p>
           </div>
-          <div class="mt-4 text-xs text-[#8892b0] font-mono">
+          <div class="mt-4 text-xs text-muted font-mono">
             <span>Python</span> <span>FastAPI</span> <span>React</span> <span>WebSockets</span> <span>OpenAI</span>
+          </div>
+          <div class="mt-4 text-xs text-muted project-links">
+            <span class="text-accent-2 font-semibold">Repo:</span>
+            <a href="https://github.com/svrohith9/Al-Powered-Interview-Coach" target="_blank"
+              class="ml-1 text-muted">github.com/svrohith9/Al-Powered-Interview-Coach</a>
           </div>
         </div>
 
         <!-- Project 2: RAG Chatbot -->
-        <div class="project-card p-6 rounded-lg flex flex-col justify-between h-full">
+        <div class="project-card p-6 rounded-xl flex flex-col justify-between h-full">
           <div>
             <div class="flex justify-between items-center mb-4">
               <svg class="w-10 h-10 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -294,24 +441,29 @@
               </svg>
               <div class="flex space-x-4">
                 <a href="https://github.com/svrohith9/RAG-and-LangChain-based-Chatbot-with-Llama2" target="_blank"
-                  class="text-[#a8b2d1] hover:text-accent"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  class="text-muted hover:text-accent"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                     <path fill-rule="evenodd"
                       d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.49.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.378.203 2.398.1 2.651.64.7 1.03 1.595 1.03 2.688 0 3.848-2.338 4.695-4.566 4.943.359.308.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z"
                       clip-rule="evenodd"></path>
                   </svg></a>
               </div>
             </div>
-            <h3 class="text-lg font-bold text-[#ccd6f6] mb-2">RAG & LangChain Chatbot</h3>
-            <p class="text-sm text-[#8892b0]">A sophisticated chatbot leveraging Retrieval-Augmented Generation (RAG)
+            <h3 class="text-lg font-bold text-ink mb-2">RAG & LangChain Chatbot</h3>
+            <p class="text-sm text-muted">A sophisticated chatbot leveraging Retrieval-Augmented Generation (RAG)
               and LangChain to provide context-aware responses from a custom knowledge base.</p>
           </div>
-          <div class="mt-4 text-xs text-[#8892b0] font-mono">
+          <div class="mt-4 text-xs text-muted font-mono">
             <span>Python</span> <span>LangChain</span> <span>Llama2</span> <span>Vector DB</span>
+          </div>
+          <div class="mt-4 text-xs text-muted project-links">
+            <span class="text-accent-2 font-semibold">Repo:</span>
+            <a href="https://github.com/svrohith9/RAG-and-LangChain-based-Chatbot-with-Llama2" target="_blank"
+              class="ml-1 text-muted">github.com/svrohith9/RAG-and-LangChain-based-Chatbot-with-Llama2</a>
           </div>
         </div>
 
         <!-- Project 3: PulseEngine -->
-        <div class="project-card p-6 rounded-lg flex flex-col justify-between h-full">
+        <div class="project-card p-6 rounded-xl flex flex-col justify-between h-full">
           <div>
             <div class="flex justify-between items-center mb-4">
               <svg class="w-10 h-10 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -322,30 +474,38 @@
               </svg>
               <div class="flex space-x-4">
                 <a href="https://github.com/svrohith9/PulseEngine" target="_blank"
-                  class="text-[#a8b2d1] hover:text-accent"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  class="text-muted hover:text-accent"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                     <path fill-rule="evenodd"
                       d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.49.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.378.203 2.398.1 2.651.64.7 1.03 1.595 1.03 2.688 0 3.848-2.338 4.695-4.566 4.943.359.308.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z"
                       clip-rule="evenodd"></path>
                   </svg></a>
                 <a href="https://svrohith9.github.io/PulseEngine/" target="_blank"
-                  class="text-[#a8b2d1] hover:text-accent"><svg class="w-6 h-6" fill="none" stroke="currentColor"
+                  class="text-muted hover:text-accent"><svg class="w-6 h-6" fill="none" stroke="currentColor"
                     viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                       d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
                   </svg></a>
               </div>
             </div>
-            <h3 class="text-lg font-bold text-[#ccd6f6] mb-2">PulseEngine Audio Visualizer</h3>
-            <p class="text-sm text-[#8892b0]">A real-time audio visualizer that turns music or microphone input into
+            <h3 class="text-lg font-bold text-ink mb-2">PulseEngine Audio Visualizer</h3>
+            <p class="text-sm text-muted">A real-time audio visualizer that turns music or microphone input into
               captivating visuals using the Web Audio API and HTML Canvas.</p>
           </div>
-          <div class="mt-4 text-xs text-[#8892b0] font-mono">
+          <div class="mt-4 text-xs text-muted font-mono">
             <span>JavaScript</span> <span>HTML5 Canvas</span> <span>Web Audio API</span>
+          </div>
+          <div class="mt-4 text-xs text-muted project-links">
+            <span class="text-accent-2 font-semibold">Repo:</span>
+            <a href="https://github.com/svrohith9/PulseEngine" target="_blank"
+              class="ml-1 text-muted">github.com/svrohith9/PulseEngine</a>
+            <span class="text-accent-2 font-semibold ml-3">Live:</span>
+            <a href="https://svrohith9.github.io/PulseEngine/" target="_blank"
+              class="ml-1 text-muted">svrohith9.github.io/PulseEngine</a>
           </div>
         </div>
 
         <!-- Project 4: Patient Management System -->
-        <div class="project-card p-6 rounded-lg flex flex-col justify-between h-full">
+        <div class="project-card p-6 rounded-xl flex flex-col justify-between h-full">
           <div>
             <div class="flex justify-between items-center mb-4">
               <svg class="w-10 h-10 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -356,24 +516,29 @@
               </svg>
               <div class="flex space-x-4">
                 <a href="https://github.com/svrohith9/patient-manager" target="_blank"
-                  class="text-[#a8b2d1] hover:text-accent"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  class="text-muted hover:text-accent"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                     <path fill-rule="evenodd"
                       d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.49.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.378.203 2.398.1 2.651.64.7 1.03 1.595 1.03 2.688 0 3.848-2.338 4.695-4.566 4.943.359.308.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z"
                       clip-rule="evenodd"></path>
                   </svg></a>
               </div>
             </div>
-            <h3 class="text-lg font-bold text-[#ccd6f6] mb-2">Full-Stack Patient Management System</h3>
-            <p class="text-sm text-[#8892b0]">A comprehensive web application for managing patient records, built with a
+            <h3 class="text-lg font-bold text-ink mb-2">Full-Stack Patient Management System</h3>
+            <p class="text-sm text-muted">A comprehensive web application for managing patient records, built with a
               robust Spring Boot backend and a dynamic React.js front-end.</p>
           </div>
-          <div class="mt-4 text-xs text-[#8892b0] font-mono">
+          <div class="mt-4 text-xs text-muted font-mono">
             <span>Java</span> <span>Spring Boot</span> <span>React.js</span> <span>MySQL</span>
+          </div>
+          <div class="mt-4 text-xs text-muted project-links">
+            <span class="text-accent-2 font-semibold">Repo:</span>
+            <a href="https://github.com/svrohith9/patient-manager" target="_blank"
+              class="ml-1 text-muted">github.com/svrohith9/patient-manager</a>
           </div>
         </div>
 
         <!-- Project 5: AI Job Automation -->
-        <div class="project-card p-6 rounded-lg flex flex-col justify-between h-full">
+        <div class="project-card p-6 rounded-xl flex flex-col justify-between h-full">
           <div>
             <div class="flex justify-between items-center mb-4">
               <svg class="w-10 h-10 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -383,24 +548,29 @@
               </svg>
               <div class="flex space-x-4">
                 <a href="https://github.com/svrohith9/dice_jobs_ai_automation" target="_blank"
-                  class="text-[#a8b2d1] hover:text-accent"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  class="text-muted hover:text-accent"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                     <path fill-rule="evenodd"
                       d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.49.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.378.203 2.398.1 2.651.64.7 1.03 1.595 1.03 2.688 0 3.848-2.338 4.695-4.566 4.943.359.308.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z"
                       clip-rule="evenodd"></path>
                   </svg></a>
               </div>
             </div>
-            <h3 class="text-lg font-bold text-[#ccd6f6] mb-2">AI-Powered Job Application Automation</h3>
-            <p class="text-sm text-[#8892b0]">An intelligent automation script that leverages Selenium for web scraping
+            <h3 class="text-lg font-bold text-ink mb-2">AI-Powered Job Application Automation</h3>
+            <p class="text-sm text-muted">An intelligent automation script that leverages Selenium for web scraping
               and AI to dynamically tailor and submit job applications on Dice.com.</p>
           </div>
-          <div class="mt-4 text-xs text-[#8892b0] font-mono">
+          <div class="mt-4 text-xs text-muted font-mono">
             <span>Python</span> <span>Selenium</span> <span>AI/LLM</span> <span>Web Automation</span>
+          </div>
+          <div class="mt-4 text-xs text-muted project-links">
+            <span class="text-accent-2 font-semibold">Repo:</span>
+            <a href="https://github.com/svrohith9/dice_jobs_ai_automation" target="_blank"
+              class="ml-1 text-muted">github.com/svrohith9/dice_jobs_ai_automation</a>
           </div>
         </div>
 
         <!-- Project 6: Costco Bill Splitter -->
-        <div class="project-card p-6 rounded-lg flex flex-col justify-between h-full">
+        <div class="project-card p-6 rounded-xl flex flex-col justify-between h-full">
           <div>
             <div class="flex justify-between items-center mb-4">
               <svg class="w-10 h-10 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -410,40 +580,205 @@
               </svg>
               <div class="flex space-x-4">
                 <a href="https://github.com/svrohith9/costco-bill-split" target="_blank"
-                  class="text-[#a8b2d1] hover:text-accent"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  class="text-muted hover:text-accent"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                     <path fill-rule="evenodd"
                       d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.49.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.378.203 2.398.1 2.651.64.7 1.03 1.595 1.03 2.688 0 3.848-2.338 4.695-4.566 4.943.359.308.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z"
                       clip-rule="evenodd"></path>
                   </svg></a>
               </div>
             </div>
-            <h3 class="text-lg font-bold text-[#ccd6f6] mb-2">Automated Bill Splitting Utility</h3>
-            <p class="text-sm text-[#8892b0]">A practical Python-based utility designed to automate the process of
+            <h3 class="text-lg font-bold text-ink mb-2">Automated Bill Splitting Utility</h3>
+            <p class="text-sm text-muted">A practical Python-based utility designed to automate the process of
               splitting shared bills by parsing receipt data to accurately calculate and assign costs.</p>
           </div>
-          <div class="mt-4 text-xs text-[#8892b0] font-mono">
+          <div class="mt-4 text-xs text-muted font-mono">
             <span>Python</span> <span>Scripting</span> <span>Automation</span>
+          </div>
+          <div class="mt-4 text-xs text-muted project-links">
+            <span class="text-accent-2 font-semibold">Repo:</span>
+            <a href="https://github.com/svrohith9/costco-bill-split" target="_blank"
+              class="ml-1 text-muted">github.com/svrohith9/costco-bill-split</a>
           </div>
         </div>
 
       </div>
     </section>
 
+    <!-- Live Projects Section -->
+    <section id="live-projects" class="py-24 fade-in-section">
+      <h2 class="section-heading flex items-center text-3xl font-bold mb-12 display-font text-ink">
+        <span class="text-accent mr-4">04.</span> Live Projects
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 stagger">
+        <div class="live-card p-6 rounded-xl flex flex-col justify-between h-full">
+          <div>
+            <h3 class="text-lg font-bold text-ink mb-2">AR Duck Game</h3>
+            <p class="text-sm text-muted">Browser-based AR mini-game with responsive controls.</p>
+          </div>
+          <div class="mt-5 text-xs text-muted project-links">
+            <span class="chip px-2 py-1 rounded-full text-accent-2 font-semibold">Live</span>
+            <a href="https://ar-duck-game.vercel.app" target="_blank" class="ml-2 text-muted">ar-duck-game.vercel.app</a>
+          </div>
+          <div class="mt-3 text-xs text-muted project-links">
+            <span class="chip px-2 py-1 rounded-full text-accent-2 font-semibold">Repo</span>
+            <a href="https://github.com/svrohith9/ar-duck-game" target="_blank"
+              class="ml-2 text-muted">github.com/svrohith9/ar-duck-game</a>
+          </div>
+        </div>
+
+        <div class="live-card p-6 rounded-xl flex flex-col justify-between h-full">
+          <div>
+            <h3 class="text-lg font-bold text-ink mb-2">Reddit Lite</h3>
+            <p class="text-sm text-muted">Lightweight Reddit reader with a clean, fast UI.</p>
+          </div>
+          <div class="mt-5 text-xs text-muted project-links">
+            <span class="chip px-2 py-1 rounded-full text-accent-2 font-semibold">Live</span>
+            <a href="https://svrohith9.github.io/reddit-lite/" target="_blank"
+              class="ml-2 text-muted">svrohith9.github.io/reddit-lite</a>
+          </div>
+          <div class="mt-3 text-xs text-muted project-links">
+            <span class="chip px-2 py-1 rounded-full text-accent-2 font-semibold">Repo</span>
+            <a href="https://github.com/svrohith9/reddit-lite" target="_blank"
+              class="ml-2 text-muted">github.com/svrohith9/reddit-lite</a>
+          </div>
+        </div>
+
+        <div class="live-card p-6 rounded-xl flex flex-col justify-between h-full">
+          <div>
+            <h3 class="text-lg font-bold text-ink mb-2">Portfolio Site</h3>
+            <p class="text-sm text-muted">Personal portfolio with curated projects and resume.</p>
+          </div>
+          <div class="mt-5 text-xs text-muted project-links">
+            <span class="chip px-2 py-1 rounded-full text-accent-2 font-semibold">Live</span>
+            <a href="https://svrohith9.github.io/" target="_blank"
+              class="ml-2 text-muted">svrohith9.github.io</a>
+          </div>
+          <div class="mt-3 text-xs text-muted project-links">
+            <span class="chip px-2 py-1 rounded-full text-accent-2 font-semibold">Repo</span>
+            <a href="https://github.com/svrohith9/svrohith9.github.io" target="_blank"
+              class="ml-2 text-muted">github.com/svrohith9/svrohith9.github.io</a>
+          </div>
+        </div>
+
+        <div class="live-card p-6 rounded-xl flex flex-col justify-between h-full">
+          <div>
+            <h3 class="text-lg font-bold text-ink mb-2">PulseEngine</h3>
+            <p class="text-sm text-muted">Audio visualizer with interactive Web Audio rendering.</p>
+          </div>
+          <div class="mt-5 text-xs text-muted project-links">
+            <span class="chip px-2 py-1 rounded-full text-accent-2 font-semibold">Live</span>
+            <a href="https://svrohith9.github.io/PulseEngine/" target="_blank"
+              class="ml-2 text-muted">svrohith9.github.io/PulseEngine</a>
+          </div>
+          <div class="mt-3 text-xs text-muted project-links">
+            <span class="chip px-2 py-1 rounded-full text-accent-2 font-semibold">Repo</span>
+            <a href="https://github.com/svrohith9/PulseEngine" target="_blank"
+              class="ml-2 text-muted">github.com/svrohith9/PulseEngine</a>
+          </div>
+        </div>
+
+        <div class="live-card p-6 rounded-xl flex flex-col justify-between h-full">
+          <div>
+            <h3 class="text-lg font-bold text-ink mb-2">ASCII Art</h3>
+            <p class="text-sm text-muted">Turns images into ASCII art with quick previews.</p>
+          </div>
+          <div class="mt-5 text-xs text-muted project-links">
+            <span class="chip px-2 py-1 rounded-full text-accent-2 font-semibold">Live</span>
+            <a href="https://svrohith9.github.io/ascii-art/" target="_blank"
+              class="ml-2 text-muted">svrohith9.github.io/ascii-art</a>
+          </div>
+          <div class="mt-3 text-xs text-muted project-links">
+            <span class="chip px-2 py-1 rounded-full text-accent-2 font-semibold">Repo</span>
+            <a href="https://github.com/svrohith9/ascii-art" target="_blank"
+              class="ml-2 text-muted">github.com/svrohith9/ascii-art</a>
+          </div>
+        </div>
+
+        <div class="live-card p-6 rounded-xl flex flex-col justify-between h-full">
+          <div>
+            <h3 class="text-lg font-bold text-ink mb-2">Image Blur Tool</h3>
+            <p class="text-sm text-muted">Client-side blur tool for quick privacy edits.</p>
+          </div>
+          <div class="mt-5 text-xs text-muted project-links">
+            <span class="chip px-2 py-1 rounded-full text-accent-2 font-semibold">Live</span>
+            <a href="https://image-blur-tool.vercel.app" target="_blank"
+              class="ml-2 text-muted">image-blur-tool.vercel.app</a>
+          </div>
+          <div class="mt-3 text-xs text-muted project-links">
+            <span class="chip px-2 py-1 rounded-full text-accent-2 font-semibold">Repo</span>
+            <a href="https://github.com/svrohith9/image-blur-tool" target="_blank"
+              class="ml-2 text-muted">github.com/svrohith9/image-blur-tool</a>
+          </div>
+        </div>
+
+        <div class="live-card p-6 rounded-xl flex flex-col justify-between h-full">
+          <div>
+            <h3 class="text-lg font-bold text-ink mb-2">Shopping Cart App</h3>
+            <p class="text-sm text-muted">Frontend shopping cart with stateful UI flows.</p>
+          </div>
+          <div class="mt-5 text-xs text-muted project-links">
+            <span class="chip px-2 py-1 rounded-full text-accent-2 font-semibold">Live</span>
+            <a href="https://svrohith9.github.io/shopping-cart-app/" target="_blank"
+              class="ml-2 text-muted">svrohith9.github.io/shopping-cart-app</a>
+          </div>
+          <div class="mt-3 text-xs text-muted project-links">
+            <span class="chip px-2 py-1 rounded-full text-accent-2 font-semibold">Repo</span>
+            <a href="https://github.com/svrohith9/shopping-cart-app" target="_blank"
+              class="ml-2 text-muted">github.com/svrohith9/shopping-cart-app</a>
+          </div>
+        </div>
+
+        <div class="live-card p-6 rounded-xl flex flex-col justify-between h-full">
+          <div>
+            <h3 class="text-lg font-bold text-ink mb-2">Speed Reading App</h3>
+            <p class="text-sm text-muted">Practice speed reading with adjustable pacing.</p>
+          </div>
+          <div class="mt-5 text-xs text-muted project-links">
+            <span class="chip px-2 py-1 rounded-full text-accent-2 font-semibold">Live</span>
+            <a href="https://svrohith9.github.io/speed-reading-app/" target="_blank"
+              class="ml-2 text-muted">svrohith9.github.io/speed-reading-app</a>
+          </div>
+          <div class="mt-3 text-xs text-muted project-links">
+            <span class="chip px-2 py-1 rounded-full text-accent-2 font-semibold">Repo</span>
+            <a href="https://github.com/svrohith9/speed-reading-app" target="_blank"
+              class="ml-2 text-muted">github.com/svrohith9/speed-reading-app</a>
+          </div>
+        </div>
+
+        <div class="live-card p-6 rounded-xl flex flex-col justify-between h-full">
+          <div>
+            <h3 class="text-lg font-bold text-ink mb-2">Quiz App</h3>
+            <p class="text-sm text-muted">Quick quiz UI with interactive scoring.</p>
+          </div>
+          <div class="mt-5 text-xs text-muted project-links">
+            <span class="chip px-2 py-1 rounded-full text-accent-2 font-semibold">Live</span>
+            <a href="https://svrohith9.github.io/quiz-app" target="_blank"
+              class="ml-2 text-muted">svrohith9.github.io/quiz-app</a>
+          </div>
+          <div class="mt-3 text-xs text-muted project-links">
+            <span class="chip px-2 py-1 rounded-full text-accent-2 font-semibold">Repo</span>
+            <a href="https://github.com/svrohith9/quiz-app" target="_blank"
+              class="ml-2 text-muted">github.com/svrohith9/quiz-app</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Contact Section -->
     <section id="contact" class="py-24 text-center fade-in-section">
-      <h2 class="text-2xl font-bold text-accent mb-2 font-mono">04. What's Next?</h2>
-      <h3 class="text-4xl md:text-5xl font-extrabold text-[#ccd6f6] mb-4">Get In Touch</h3>
-      <p class="max-w-xl mx-auto text-[#8892b0] mb-8">
+      <h2 class="text-2xl font-bold text-accent mb-2 tracking-[0.2em] uppercase">05. What's Next?</h2>
+      <h3 class="text-4xl md:text-5xl font-extrabold text-ink mb-4 display-font">Get In Touch</h3>
+      <p class="max-w-xl mx-auto text-muted mb-8">
         I'm currently seeking new backend engineering roles where I can contribute to building scalable and resilient
         systems. My inbox is always open, whether you have a question or just want to say hi.
       </p>
       <div class="flex flex-col items-center space-y-6">
         <a href="mailto:svrohith9@gmail.com"
-          class="bg-transparent border border-accent text-accent font-bold py-4 px-8 rounded-md hover:bg-accent hover:bg-opacity-10 transition-colors duration-300 w-full md:w-auto">
+          class="bg-transparent border border-accent text-accent font-bold py-4 px-8 rounded-md hover:bg-accent hover:bg-opacity-10 transition-colors duration-300 w-full md:w-auto hero-chip">
           Say Hello
         </a>
         <a href="https://linktr.ee/svrohith9" target="_blank"
-          class="bg-accent text-[#0a192f] font-bold py-4 px-8 rounded-md hover:bg-opacity-80 transition-all duration-300 w-full md:w-auto">
+          class="bg-accent text-white font-bold py-4 px-8 rounded-md hover:bg-opacity-80 transition-all duration-300 w-full md:w-auto">
           Connect With Me (Linktree)
         </a>
       </div>
@@ -486,7 +821,7 @@
       draw() {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
-        ctx.fillStyle = '#233554';
+        ctx.fillStyle = 'rgba(15, 118, 110, 0.25)';
         ctx.fill();
       }
       update() {
@@ -518,7 +853,7 @@
             + ((particles[a].y - particles[b].y) * (particles[a].y - particles[b].y));
           if (distance < (canvas.width / 7) * (canvas.height / 7)) {
             let opacity = 1 - (distance / 20000);
-            ctx.strokeStyle = `rgba(100, 255, 218, ${opacity * 0.3})`;
+            ctx.strokeStyle = `rgba(15, 118, 110, ${opacity * 0.25})`;
             ctx.lineWidth = 1;
             ctx.beginPath();
             ctx.moveTo(particles[a].x, particles[a].y);
